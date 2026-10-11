@@ -1,0 +1,272 @@
+@import "tailwindcss";
+
+/* The theme switch writes `.dark` onto <html>, so the dark variant keys off a
+   class rather than the media query. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Palette — mapped from the Figma raw hex values.
+     Every one of these is re-pointed under `.dark` below, so components style
+     themselves with tokens and never need a `dark:` colour utility. */
+  --color-canvas: #ffffff;
+  --color-shell: #ffffff;
+  --color-ink: #000000;
+  --color-muted: #808080;
+  --color-accent: #0056f8;
+  --color-surface: #f5f5f5;
+  --color-night: #1e202b;
+  --color-hairline: #525252;
+  --color-paper: #fafafa;
+  --color-dash: #d5d5d5;
+  --color-sky: #7bc5ff;
+  --color-deep: #0d4b72;
+  --color-plum: #301a4b;
+  --color-mint: #6fd58b;
+  --color-band-muted: #b3b3b3;
+  /* Zeus brand orange — the case study's hero band. A brand colour, so it is
+     deliberately left out of the .dark overrides. */
+  --color-zeus: #ffa902;
+  /* Bitcoin orange — the Transcripts metrics band. Brand, so not in .dark. */
+  --color-btc: #f7931a;
+
+  /* "Live File" canvas palette — the home page only. The case-study pages
+     still use the Figma tokens above, so these are additive, not a repoint. */
+  --color-cv-bg: #eef0f3;
+  --color-cv-dot: #c6cbd4;
+  --color-cv-panel: #ffffff;
+  --color-cv-line: #dde1e7;
+  --color-cv-line-soft: #eceef2;
+  --color-cv-ink: #15171c;
+  --color-cv-body: #3a3f4a;
+  --color-cv-dim: #5b616e;
+  --color-cv-select: #2f5bff;
+  --color-cv-measure: #ff3b5c;
+  /* Fills that carry white text. The accent above has to brighten in dark mode
+     to read as text on a dark panel, which would drop white-on-accent to
+     3.45:1 — so fills get their own token that holds 4.5:1+ in both themes. */
+  --color-cv-select-fill: #2f5bff;
+  --color-cv-measure-fill: #d0244b;
+  --color-cv-eng: #ff7a45;
+  --color-cv-prod: #7240f0;
+  --color-cv-ai: #0b7a5f;
+
+  /* Type stacks.
+     The Figma file uses licensed faces (Test Martina Plantijn, Helvetica Now
+     Display, Clash Grotesk). They are listed first so that dropping the real
+     webfonts in later picks them up automatically; the fallbacks after them
+     are the closest freely available matches. */
+  --font-display: "Test Martina Plantijn", var(--font-newsreader), Georgia,
+    "Times New Roman", serif;
+  --font-sans: "Helvetica Now Display", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  --font-logo: var(--font-ubuntu), "Ubuntu", sans-serif;
+  --font-grotesk: "Clash Grotesk", "Helvetica Now Display", "Helvetica Neue",
+    Arial, sans-serif;
+
+  /* "Live File" type — Google faces, so these actually ship. */
+  --font-cv-serif: var(--font-instrument-serif), "Instrument Serif", Georgia,
+    serif;
+  --font-cv-sans: var(--font-instrument-sans), "Instrument Sans",
+    "Helvetica Neue", Arial, sans-serif;
+  --font-cv-mono: var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace,
+    "SFMono-Regular", Menlo, monospace;
+
+  /* Frame geometry from the 1440px desktop artboard */
+  --spacing-frame: 1312px;
+}
+
+/*
+ * Dark theme. The Figma file is light-only, so this palette is derived from it:
+ * hues and relationships are preserved, luminance is inverted, and every pair
+ * was checked for WCAG AA. Unlayered, so it wins over @theme's `theme` layer.
+ */
+.dark {
+  --color-canvas: #0e0e10;
+  --color-shell: #17171b;
+  --color-ink: #f2f2f0;
+  --color-muted: #9b9b9b;
+  --color-accent: #1463ff;
+  --color-surface: #1b1b1f;
+  --color-night: #232634;
+  --color-hairline: #56565f;
+  --color-paper: #151518;
+  --color-dash: #3c3c43;
+  /* The Cardplug metrics band flips: pale-blue ground with deep-blue type
+     becomes a deep ground with pale type. */
+  --color-sky: #0f2f4a;
+  --color-deep: #a8d4f5;
+  /* Divest's band was already dark; it only needs to sit off the canvas. */
+  --color-plum: #2a1642;
+  --color-mint: #6fd58b;
+  --color-band-muted: #b3b3b3;
+
+  /* Canvas palette, dark. Panel vs canvas is only ~1.19:1 on luminance, so the
+     artboard's edge is carried by its border rather than by fill alone. The
+     three cursor hues are already mid-tone and carry over unchanged. */
+  --color-cv-bg: #0a0c0f;
+  --color-cv-dot: #272b32;
+  --color-cv-panel: #1c1f26;
+  --color-cv-line: #2e333c;
+  --color-cv-line-soft: #23272f;
+  --color-cv-ink: #eceef2;
+  --color-cv-body: #b8bec9;
+  --color-cv-dim: #9aa1ad;
+  --color-cv-select: #5b82ff;
+  --color-cv-measure: #ff6b82;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  /* No transition here on purpose: the body background would animate while
+     every text colour snapped instantly, leaving a brief window of near-zero
+     contrast mid-swap. The theme flips in one frame instead. */
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  /* Controls carry `transition-colors` for their hover state, which would make
+     them cross-fade while the rest of the page snaps. Transitions are muted for
+     the single frame the theme flips in. */
+  .theme-switching *,
+  .theme-switching *::before,
+  .theme-switching *::after {
+    transition: none !important;
+  }
+
+  /* Monochrome UI glyphs ship from Figma with baked-in black fills, so they are
+     flipped rather than re-exported. Artwork with real colour is left alone. */
+  .glyph-mono {
+    filter: none;
+  }
+
+  .dark .glyph-mono {
+    filter: invert(1);
+  }
+
+  /* Case-study stills carry their light artboard background in the exported
+     pixels. Rather than dim them — which would misrepresent the work — they get
+     a soft frame in dark mode so they read as intentional light panels instead
+     of blown-out slabs. */
+  .dark .artboard {
+    border-radius: 16px;
+    box-shadow: 0 0 0 1px var(--color-dash);
+  }
+
+  /* Phone-frame exports have a black bezel that vanishes on the dark canvas.
+     The radius is the frame's own 40px over 272 x 589, kept as a ratio so it
+     tracks the image at any width. */
+  .dark .phone-shot {
+    border-radius: 14.7% / 6.79%;
+    box-shadow: 0 0 0 1px var(--color-dash);
+  }
+
+  /* Later frames draw their bezel as an outside stroke, so the export is the
+     bezel's own outline — a tighter ~25px corner on a 284 x 601 box. The
+     exports carry white corners, so the clip has to match or they show. */
+  .dark .phone-shot--outset {
+    border-radius: 8.8% / 4.16%;
+  }
+
+  /* Tablet mockups: the radius is set inline (it differs per frame height);
+     dark mode only adds the edge the black bezel loses against the canvas. */
+  .dark .device-shot {
+    box-shadow: 0 0 0 1px var(--color-dash);
+  }
+}
+
+/*
+ * "Live File" canvas — the home page presents itself as an open design file.
+ * The page is the canvas, the hero and each project card are artboards on it.
+ */
+
+.cv-dots {
+  background-color: var(--color-cv-bg);
+  background-image: radial-gradient(var(--color-cv-dot) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+
+/* The text caret that sits after the headline's italic line. */
+@keyframes cv-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.cv-caret {
+  animation: cv-blink 1s steps(1) infinite;
+}
+
+/* Collaborator cursors drifting over the canvas. */
+@keyframes cv-drift-a {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(60px, -30px);
+  }
+  50% {
+    transform: translate(110px, 20px);
+  }
+  75% {
+    transform: translate(40px, 40px);
+  }
+}
+
+@keyframes cv-drift-b {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(-80px, 30px);
+  }
+  66% {
+    transform: translate(-30px, -50px);
+  }
+}
+
+@keyframes cv-drift-c {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-120px, -20px);
+  }
+}
+
+.cv-cursor-a {
+  animation: cv-drift-a 9s ease-in-out infinite;
+}
+.cv-cursor-b {
+  animation: cv-drift-b 11s ease-in-out infinite;
+}
+.cv-cursor-c {
+  animation: cv-drift-c 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-caret,
+  .cv-cursor-a,
+  .cv-cursor-b,
+  .cv-cursor-c {
+    animation: none;
+  }
+}
