@@ -79,7 +79,7 @@ export default function DivestCaseStudy() {
     <>
       <main
         id="top"
-        className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-24 px-6 pt-24 pb-[136px] md:px-10 lg:gap-[104px] lg:px-16"
+        className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-32 px-6 pt-24 pb-[136px] md:px-10 lg:gap-40 lg:px-16"
       >
         {/* Intro */}
         <section className="flex w-full flex-col items-center gap-8">

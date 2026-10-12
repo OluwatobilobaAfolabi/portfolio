@@ -20,7 +20,7 @@ const FULL = "(max-width: 1439px) calc(100vw - 3rem), 1312px";
 const PANEL = "(max-width: 1439px) calc(100vw - 3rem), 1091px";
 const NARROW = "(max-width: 1439px) 40vw, 322px";
 
-/** Sections are 104px apart; blocks inside a section are 32px apart. */
+/** Sections are 160px apart (128px below lg); blocks inside are 32px apart. */
 function Section({ children }: { children: React.ReactNode }) {
   return (
     <section className="flex flex-col items-center gap-8 lg:gap-8">
@@ -126,7 +126,7 @@ export default function CardplugCaseStudy() {
     <>
       <main
         id="top"
-        className="mx-auto flex w-full max-w-[1440px] flex-col gap-24 px-6 pt-24 pb-[136px] md:px-10 lg:gap-[104px] lg:px-16"
+        className="mx-auto flex w-full max-w-[1440px] flex-col gap-32 px-6 pt-24 pb-[136px] md:px-10 lg:gap-40 lg:px-16"
       >
         {/* Intro */}
         <section className="flex flex-col items-center gap-8">

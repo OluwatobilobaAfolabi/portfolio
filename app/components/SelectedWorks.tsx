@@ -157,7 +157,7 @@ const PROJECTS: Project[] = [
 
 export default function SelectedWorks() {
   return (
-    <section id="projects" className="flex flex-col items-start gap-8">
+    <section id="projects" className="flex scroll-mt-10 flex-col items-start gap-8">
       <div className="flex flex-col gap-2">
         <p className="font-cv-mono text-[12px] text-cv-dim">6 frames · Page 1</p>
         <h2 className="font-cv-serif text-[clamp(2rem,4.5vw,64px)] leading-[0.95] tracking-[-0.02em] text-cv-ink">

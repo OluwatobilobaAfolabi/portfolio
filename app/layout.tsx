@@ -6,7 +6,6 @@ import {
   Newsreader,
   Ubuntu,
 } from "next/font/google";
-import ThemeToggle from "./components/ThemeToggle";
 import "./globals.css";
 
 /* Stand-in for "Test Martina Plantijn" — a Plantin-derived serif with a true
@@ -77,7 +76,6 @@ export default function RootLayout({
       </head>
       <body>
         {children}
-        <ThemeToggle />
       </body>
     </html>
   );

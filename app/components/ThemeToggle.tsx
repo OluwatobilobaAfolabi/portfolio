@@ -10,6 +10,9 @@ import { playSwitchClick } from "../lib/switchSound";
  * already in the right position on the first frame. This subscribes to that
  * class rather than mirroring it into state, which also keeps the switch
  * correct if the theme is changed from anywhere else.
+ *
+ * It lives at the end of the bottom dock on every page, so it is styled for the
+ * dock's dark bar in both themes.
  */
 function subscribe(onStoreChange: () => void) {
   const observer = new MutationObserver(onStoreChange);
@@ -71,14 +74,14 @@ export default function ThemeToggle() {
       aria-label="Dark mode"
       title="Toggle dark mode"
       suppressHydrationWarning
-      className="fixed top-6 right-6 z-[60] flex h-9 w-[64px] items-center rounded-full border border-solid border-hairline bg-shell/80 px-1 backdrop-blur-[5px] transition-colors hover:bg-surface lg:top-8 lg:right-8"
+      className="mx-1 flex h-8 w-[54px] shrink-0 items-center rounded-full bg-[#2a2d35] px-[3px] transition-colors hover:bg-[#363a44] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cv-select-fill"
     >
-      <span className="relative flex h-7 w-7 translate-x-0 items-center justify-center rounded-full bg-ink transition-transform duration-200 ease-out dark:translate-x-[28px]">
+      <span className="relative flex size-[26px] translate-x-0 items-center justify-center rounded-full bg-white transition-transform duration-200 ease-out dark:translate-x-[22px]">
         {/* Sun — light mode */}
         <svg
           viewBox="0 0 24 24"
           aria-hidden
-          className="absolute h-4 w-4 text-canvas opacity-100 transition-opacity duration-200 dark:opacity-0"
+          className="absolute size-[15px] text-[#15171c] opacity-100 transition-opacity duration-200 dark:opacity-0"
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
@@ -91,7 +94,7 @@ export default function ThemeToggle() {
         <svg
           viewBox="0 0 24 24"
           aria-hidden
-          className="absolute h-4 w-4 text-canvas opacity-0 transition-opacity duration-200 dark:opacity-100"
+          className="absolute size-[15px] text-[#15171c] opacity-0 transition-opacity duration-200 dark:opacity-100"
           fill="currentColor"
         >
           <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a7 7 0 1 0 10.5 10.5Z" />
