@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import {
+  Audiowide,
   Instrument_Sans,
   JetBrains_Mono,
   Newsreader,
@@ -35,6 +36,14 @@ const instrumentSans = Instrument_Sans({
   display: "swap",
 });
 
+/* Heading-face trial: every h1–h6 is set in Audiowide (see globals.css). */
+const audiowide = Audiowide({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-audiowide",
+  display: "swap",
+});
+
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
@@ -54,7 +63,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${newsreader.variable} ${ubuntu.variable} ${instrumentSans.variable} ${jetbrainsMono.variable}`}
+      className={`${newsreader.variable} ${ubuntu.variable} ${instrumentSans.variable} ${jetbrainsMono.variable} ${audiowide.variable}`}
       suppressHydrationWarning
     >
       <head>

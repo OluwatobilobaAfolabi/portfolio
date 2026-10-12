@@ -69,6 +69,10 @@
   --font-cv-mono: var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace,
     "SFMono-Regular", Menlo, monospace;
 
+  /* Heading-face trial. */
+  --font-heading: var(--font-audiowide), "Audiowide", "Helvetica Neue", Arial,
+    sans-serif;
+
   /* Frame geometry from the 1440px desktop artboard */
   --spacing-frame: 1312px;
 }
@@ -267,4 +271,36 @@
   .cv-cursor-c {
     animation: none;
   }
+}
+
+/*
+ * Heading-face trial: Audiowide on every heading, home and case studies.
+ * Unlayered, so it wins over the per-heading utility classes without touching
+ * them; delete this block (and --font-heading) to go back to the serif.
+ * Audiowide ships one upright weight, so accents stay upright and are carried
+ * by their colour alone, and the serif's tight tracking is relaxed.
+ */
+:is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  font-synthesis: none;
+}
+:is(h1, h2, h3, h4, h5, h6) em {
+  font-style: normal;
+  font-weight: 400;
+}
+/* Audiowide runs ~24% wider than the serif; resize the hero so "Complex
+   problems," still holds one line of its artboard. */
+.hero-title {
+  font-size: clamp(2rem, 9.2cqw, 72px);
+  line-height: 1.05;
+}
+/* The case-study titles and section headings (all set at clamp(2rem,5vw,72px))
+   come down to 56px and wrap evenly instead of holding one line. */
+:is(h1, h2)[class*="5vw,72px"] {
+  font-size: clamp(1.75rem, 3.9vw, 56px);
+  line-height: 1.2;
+  white-space: normal;
+  text-wrap: balance;
 }
