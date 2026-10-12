@@ -91,7 +91,7 @@ export function LayersPanel() {
     <PanelShell
       title={
         <div className="flex items-center gap-2.5">
-          <span className="flex size-[26px] items-center justify-center rounded-[7px] bg-cv-ink font-cv-serif text-[17px] italic text-cv-panel">
+          <span className="flex size-[26px] items-center justify-center rounded-[7px] bg-cv-ink font-display text-[17px] font-medium italic text-cv-panel">
             A
           </span>
           <span className="flex flex-col">

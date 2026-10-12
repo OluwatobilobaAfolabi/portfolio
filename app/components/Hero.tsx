@@ -59,12 +59,13 @@ export default function Hero() {
             Afolabi Oluwatobiloba — Senior Product Designer
           </p>
 
-          {/* The artboard */}
-          <div className="relative rounded border border-solid border-cv-line bg-cv-panel px-6 py-10 shadow-[0_30px_60px_rgba(21,23,28,0.08)] sm:px-10 lg:px-14 lg:py-14">
-            <h1 className="font-cv-serif text-[clamp(2.5rem,7vw,100px)] leading-[0.92] tracking-[-0.02em] text-cv-ink">
+          {/* The artboard. The headline scales with it (cqw) so "Complex
+              problems," holds one line however wide the side panels leave it. */}
+          <div className="@container relative rounded border border-solid border-cv-line bg-cv-panel px-6 py-10 shadow-[0_30px_60px_rgba(21,23,28,0.08)] sm:px-10 lg:px-14 lg:py-14">
+            <h1 className="font-display text-[clamp(2.5rem,11.4cqw,88px)] leading-[1] font-medium tracking-[-0.025em] text-cv-ink">
               Complex problems,
               <br />
-              <em className="text-cv-select not-italic italic">made intuitive.</em>
+              <em className="font-medium italic text-cv-select">made intuitive.</em>
               <span
                 aria-hidden
                 className="cv-caret ml-2 inline-block h-[0.78em] w-[4px] translate-y-[0.08em] bg-cv-select align-baseline"

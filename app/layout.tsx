@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import {
   Instrument_Sans,
-  Instrument_Serif,
   JetBrains_Mono,
   Newsreader,
   Ubuntu,
@@ -27,15 +26,8 @@ const ubuntu = Ubuntu({
   display: "swap",
 });
 
-/* "Live File" faces — the home page. */
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  weight: ["400"],
-  variable: "--font-instrument-serif",
-  display: "swap",
-});
-
+/* "Live File" faces — the home page. Its headings use the display serif, so
+   they match the case studies. */
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -62,7 +54,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${newsreader.variable} ${ubuntu.variable} ${instrumentSerif.variable} ${instrumentSans.variable} ${jetbrainsMono.variable}`}
+      className={`${newsreader.variable} ${ubuntu.variable} ${instrumentSans.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>

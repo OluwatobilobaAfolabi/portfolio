@@ -41,7 +41,7 @@ export default function WorkCard({
 
         <div className="flex flex-1 flex-col gap-5 p-6 lg:p-8">
           <div className="flex flex-col gap-2">
-            <h3 className="font-cv-serif text-[clamp(1.5rem,2.2vw,34px)] leading-[1.05] tracking-[-0.01em] text-cv-ink">
+            <h3 className="font-display text-[clamp(1.5rem,2.2vw,34px)] leading-[1.15] font-medium tracking-[-0.01em] text-cv-ink">
               {title}
             </h3>
             <p className="text-[clamp(0.9375rem,1.1vw,17px)] leading-[1.55] text-cv-body">

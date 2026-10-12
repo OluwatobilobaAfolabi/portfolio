@@ -160,8 +160,8 @@ export default function SelectedWorks() {
     <section id="projects" className="flex scroll-mt-10 flex-col items-start gap-8">
       <div className="flex flex-col gap-2">
         <p className="font-cv-mono text-[12px] text-cv-dim">6 frames · Page 1</p>
-        <h2 className="font-cv-serif text-[clamp(2rem,4.5vw,64px)] leading-[0.95] tracking-[-0.02em] text-cv-ink">
-          Selected <em className="text-cv-select not-italic italic">Works</em>
+        <h2 className="font-display text-[clamp(2rem,4.5vw,64px)] leading-[1.05] font-medium tracking-[-0.02em] text-cv-ink">
+          Selected <em className="font-medium italic text-cv-select">Works</em>
         </h2>
       </div>
 

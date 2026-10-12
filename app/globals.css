@@ -64,8 +64,6 @@
     Arial, sans-serif;
 
   /* "Live File" type — Google faces, so these actually ship. */
-  --font-cv-serif: var(--font-instrument-serif), "Instrument Serif", Georgia,
-    serif;
   --font-cv-sans: var(--font-instrument-sans), "Instrument Sans",
     "Helvetica Neue", Arial, sans-serif;
   --font-cv-mono: var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace,
